@@ -156,24 +156,36 @@ m_health_points = random.choice(diceOptions)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
 
 #Lab04 Q5 - item 1
-print("!!You found a loot bag! Look inside to find two items!!")
-input ("Roll for first item! (Press Enter)")
-lootRoll = random.choice(1, len(loot_options) + 1)
-loot = loot_options.pop(lootRoll -1)
+print("!!Tou find a loot bag! Look inside to find 2 items:")
+input("Roll for first item (Press Enter)")
+lootRoll = random.choice(range(1, len(loot_options) + 1))
+loot  = loot_options.pop(lootRoll - 1)
 belt.append(loot)
-print("Your belt:", belt)
+print("Your belt: ", belt)
 
 #Lab04 Q6 - item 2
-input ("Roll for second item! (Press Enter)")
-lootRoll = random.choice(1, len(loot_options) + 1)
-loot = loot_options.pop(lootRoll -1)
+input("Roll for first item (Press Enter)")
+lootRoll = random.choice(range(1, len(loot_options) + 1))
+loot  = loot_options.pop(lootRoll - 1)
 belt.append(loot)
-print("Your belt:", belt)
+print("Your belt: ", belt)
 
 #Lab04 Q7 - Sort the belt
 print("You're neat, so organize your belt alphabetically:")
 belt.sort()
 print("your belt: ", belt)
+
+#Lab04 Q8 - use the belt
+print("you see a monster in the distance! So, quicly use your first item:")
+first_item = belt.pop(0)
+if first_item in good_loot_options:
+    health_points = min(6, (health_points + 2))
+    print("You used "+ first_item + "to hurt your health to " + str(health_points))
+elif first_item in bad_loot_options:
+    health_points = max(0, (health_points - 2))
+    print("You used "+ first_item + "to hurt your health to " + str(health_points))
+else:
+    print("You used "+ first_item + "but it's not helpful")      
 
 input("Analyze the roll (Press enter)")
 # Compare Player vs Monster's strength
